@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cornell x Columbia AI Hackathon 2026
 
-## Getting Started
+Landing page for the Cornell x Columbia AI Hackathon — a highly selective event bringing together 120 graduate builders from Cornell Tech, Columbia, NYU, Yale, and Princeton for a weekend of prototyping agentic AI solutions.
 
-First, run the development server:
+**March 20–22, 2026 | Cornell Tech, Roosevelt Island, NYC**
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Framer Motion](https://motion.dev) for scroll-triggered animations
+- [Vercel](https://vercel.com) for hosting (auto-deploys on push to `main`)
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pushes to `main` automatically deploy to production via Vercel.
 
-## Learn More
+To deploy manually:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+vercel --prod
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+  layout.tsx        # Fonts (Instrument Serif + DM Sans), metadata
+  page.tsx          # Page composition
+  globals.css       # Design system, animations, custom effects
+components/
+  hero.tsx          # Animated hero with countdown
+  about.tsx         # Stats with animated counters
+  schedule.tsx      # 3-day tabbed timeline
+  sponsors.tsx      # Gold/Silver sponsorship tiers
+  faq.tsx           # Collapsible accordion
+  footer.tsx        # Links and organizing info
+  nav.tsx           # Sticky nav with glass blur
+  fade-in.tsx       # Reusable animation primitives
+  countdown.tsx     # Live countdown timer
+public/
+  logo-white.png    # Cornell Tech AI Society logo (white/transparent)
+```
 
-## Deploy on Vercel
+## Links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Event Page (Luma)](https://luma.com/8dbisemh)
+- Sponsor inquiries: ctsg@cornell.edu
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Organized By
+
+**Cornell Tech Student Government** & **Cornell Tech AI Society**
