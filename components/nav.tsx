@@ -14,8 +14,13 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const [pastHero, setPastHero] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      setPastHero(window.scrollY > window.innerHeight * 0.4);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -33,11 +38,15 @@ export function Nav() {
           <Image
             src="/logo-white.png"
             alt="Cornell Tech AI Society"
-            width={36}
-            height={36}
-            className="opacity-70 group-hover:opacity-100 transition-opacity"
+            width={72}
+            height={72}
+            className={`transition-all duration-500 ${
+              pastHero ? "opacity-70 group-hover:opacity-100 scale-100" : "opacity-0 scale-75 pointer-events-none"
+            }`}
           />
-          <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors hidden sm:inline">
+          <span className={`text-sm font-medium transition-all duration-500 hidden sm:inline ${
+            pastHero ? "text-text-secondary group-hover:text-text-primary" : "opacity-0 pointer-events-none"
+          }`}>
             CT AI Society
           </span>
         </a>

@@ -10,8 +10,8 @@ export function Footer() {
             <Image
               src="/logo-white.png"
               alt="Cornell Tech AI Society"
-              width={44}
-              height={44}
+              width={112}
+              height={112}
               className="opacity-50 mt-0.5"
             />
             <div>
@@ -80,6 +80,16 @@ export function Footer() {
                     className="text-text-secondary text-sm hover:text-text-primary transition-colors"
                   >
                     Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://cornell-tech-ai-society.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-secondary text-sm hover:text-text-primary transition-colors"
+                  >
+                    CT AI Society
                   </a>
                 </li>
               </ul>

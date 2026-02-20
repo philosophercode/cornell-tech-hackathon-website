@@ -79,7 +79,16 @@ export function About() {
           <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
             The Cornell x Columbia AI Hackathon 2026 brings together top student
             builders from five universities for a weekend of prototyping agentic
-            AI solutions across real-world workflows.
+            AI solutions across real-world workflows. In collaboration with the{" "}
+            <a
+              href="https://cornell-tech-ai-society.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cornell-red hover:underline"
+            >
+              Cornell Tech AI Society
+            </a>
+            .
           </p>
         </FadeIn>
 

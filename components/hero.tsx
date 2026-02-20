@@ -31,8 +31,8 @@ export function Hero() {
           <Image
             src="/logo-white.png"
             alt="Cornell Tech AI Society"
-            width={90}
-            height={90}
+            width={230}
+            height={230}
             className="mx-auto opacity-60"
             priority
           />
