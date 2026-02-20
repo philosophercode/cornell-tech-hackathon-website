@@ -107,7 +107,7 @@ export function Sponsors() {
               Interested in sponsoring? We&rsquo;d love to chat.
             </p>
             <a
-              href="mailto:ctsg@cornell.edu?subject=Cornell%20x%20Columbia%20AI%20Hackathon%20%E2%80%93%20Sponsorship%20Inquiry"
+              href="mailto:ctsg@cornell.edu,na553@cornell.edu,cd698@cornell.edu?subject=Cornell%20x%20Columbia%20AI%20Hackathon%20%E2%80%93%20Sponsorship%20Inquiry"
               className="inline-block px-8 py-3.5 rounded-full bg-cornell-red text-white text-sm font-medium tracking-wide hover:bg-cornell-red-hover transition-all duration-300 shadow-[0_0_30px_rgba(179,27,27,0.3)] hover:shadow-[0_0_50px_rgba(179,27,27,0.5)]"
             >
               Get in Touch
