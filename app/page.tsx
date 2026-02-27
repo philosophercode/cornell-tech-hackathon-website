@@ -15,9 +15,9 @@ export default function Home() {
         <div className="section-divider" />
         <About />
         <div className="section-divider" />
-        <Schedule />
-        <div className="section-divider" />
         <Sponsors />
+        <div className="section-divider" />
+        <Schedule />
         <div className="section-divider" />
         <FAQ />
       </main>
