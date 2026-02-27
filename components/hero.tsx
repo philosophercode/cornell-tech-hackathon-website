@@ -29,7 +29,7 @@ export function Hero() {
           className="mb-10"
         >
           <Image
-            src="/logo-white.png"
+            src="/logo_ctais_white.png"
             alt="Cornell Tech AI Society"
             width={230}
             height={230}

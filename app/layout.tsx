@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     url: "https://cornell-tech-hackathon.vercel.app",
     images: [
       {
-        url: "/logo-white.png",
-        width: 2048,
-        height: 2048,
+        url: "/banner_logo_ctais.png",
+        width: 1600,
+        height: 400,
         alt: "Cornell x Columbia AI Hackathon 2026",
       },
     ],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Cornell x Columbia AI Hackathon 2026",
     description:
       "A highly selective AI hackathon for top graduate builders. March 20–22, 2026 at Cornell Tech.",
-    images: ["/logo-white.png"],
+    images: ["/banner_logo_ctais.png"],
   },
 };
 

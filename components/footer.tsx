@@ -8,7 +8,7 @@ export function Footer() {
           {/* Left: Logo + info */}
           <div className="flex items-start gap-4">
             <Image
-              src="/logo-white.png"
+              src="/logo_ctais_white.png"
               alt="Cornell Tech AI Society"
               width={112}
               height={112}

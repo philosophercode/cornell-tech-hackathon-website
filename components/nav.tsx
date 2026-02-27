@@ -36,7 +36,7 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
           <Image
-            src="/logo-white.png"
+            src="/logo_ctais_white.png"
             alt="Cornell Tech AI Society"
             width={72}
             height={72}
