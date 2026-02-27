@@ -19,11 +19,28 @@ export const metadata: Metadata = {
   title: "Cornell x Columbia AI Hackathon 2026",
   description:
     "120 top graduate builders from Cornell, Columbia, NYU, Yale, and Princeton. One weekend. Agentic AI. March 20–22 at Cornell Tech, Roosevelt Island.",
+  metadataBase: new URL("https://cornell-tech-hackathon.vercel.app"),
   openGraph: {
     title: "Cornell x Columbia AI Hackathon 2026",
     description:
       "A highly selective AI hackathon for top graduate builders. March 20–22, 2026 at Cornell Tech.",
     type: "website",
+    url: "https://cornell-tech-hackathon.vercel.app",
+    images: [
+      {
+        url: "/logo-white.png",
+        width: 2048,
+        height: 2048,
+        alt: "Cornell x Columbia AI Hackathon 2026",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Cornell x Columbia AI Hackathon 2026",
+    description:
+      "A highly selective AI hackathon for top graduate builders. March 20–22, 2026 at Cornell Tech.",
+    images: ["/logo-white.png"],
   },
 };
 
