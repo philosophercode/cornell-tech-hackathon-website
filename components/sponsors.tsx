@@ -1,6 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn, StaggerContainer, StaggerItem } from "./fade-in";
+
+const currentSponsors = [
+  { name: "Anthropic", logo: "/sponsors/anthropic.svg", width: 280, height: 56 },
+  { name: "Lovable", logo: "/sponsors/lovable.svg", width: 210, height: 42 },
+];
 
 const tiers = [
   {
@@ -72,6 +78,27 @@ export function Sponsors() {
             >
               Get in Touch
             </a>
+          </div>
+        </FadeIn>
+
+        {/* Current sponsors */}
+        <FadeIn delay={0.45}>
+          <div className="mb-16">
+            <p className="text-xs tracking-[0.25em] uppercase text-text-muted mb-6 font-medium">
+              Current Sponsors
+            </p>
+            <div className="flex flex-wrap items-center gap-10">
+              {currentSponsors.map((sponsor) => (
+                <Image
+                  key={sponsor.name}
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  width={sponsor.width}
+                  height={sponsor.height}
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-200"
+                />
+              ))}
+            </div>
           </div>
         </FadeIn>
 
