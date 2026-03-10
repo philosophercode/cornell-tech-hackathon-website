@@ -138,6 +138,8 @@ export function Sponsors() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+
       </div>
     </section>
   );
