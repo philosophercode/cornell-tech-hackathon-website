@@ -81,23 +81,13 @@ const days: Day[] = [
       },
       {
         time: "10:30 – 11:30 AM",
-        title: "Optional Workshop 1a – AI Society",
-        location: "Bloomberg Auditorium",
-      },
-      {
-        time: "10:30 – 11:30 AM",
-        title: "Optional Workshop 1b",
-        location: "Bloomberg 081",
-      },
-      {
-        time: "11:30 AM – 12:30 PM",
-        title: "Optional Workshop 2a – AI Society",
+        title: "Optional Workshop – AI Society",
         location: "Bloomberg Auditorium",
       },
       {
         time: "11:30 AM – 12:30 PM",
-        title: "Optional Workshop 2b",
-        location: "Bloomberg 081",
+        title: "Optional Workshop – AI Society",
+        location: "Bloomberg Auditorium",
       },
       {
         time: "10:30 AM – 12:30 PM",
