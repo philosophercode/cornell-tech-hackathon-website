@@ -29,61 +29,14 @@ export function Hero() {
           className="mb-10 flex items-center justify-center gap-4 md:gap-12"
         >
           <Image
-            src="/ai-society-logo.png"
-            alt="AI Society"
-            width={100}
-            height={100}
-            className="object-contain h-auto w-auto max-w-[60px] md:max-w-[100px]"
-            priority
-          />
-          <Image
-            src="/empire-hacks-logo.png"
-            alt="Empire Hacks"
-            width={100}
-            height={100}
-            className="object-contain h-auto w-auto max-w-[60px] md:max-w-[100px]"
-            priority
-          />
-          <Image
-            src="/ai-club-columbia-logo.png"
-            alt="AI Club Columbia"
-            width={120}
-            height={120}
-            className="object-contain h-auto w-auto max-w-[80px] md:max-w-[120px]"
+            src="/empirehacks26_nobg.png"
+            alt="Empire Hacks 2026"
+            width={400}
+            height={400}
+            className="object-contain h-auto w-auto max-w-[200px] md:max-w-[400px]"
             priority
           />
         </motion.div>
-
-        {/* Overline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-text-muted text-xs tracking-[0.35em] uppercase mb-6 font-sans font-medium"
-        >
-          Cornell Tech&ensp;&times;&ensp;Columbia
-        </motion.p>
-
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35 }}
-          className="font-serif text-[clamp(3rem,8vw,8rem)] leading-[0.9] tracking-tight mb-6"
-        >
-          <span className="block text-text-primary">Empire Hacks</span>
-          <span className="block italic text-text-secondary mt-1">2026</span>
-        </motion.h1>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="text-text-secondary text-lg md:text-xl font-light max-w-xl mx-auto mb-2"
-        >
-          120 top graduate builders. One weekend. Agentic AI Hackathon.
-        </motion.p>
 
         {/* Date & Location */}
         <motion.p
@@ -103,30 +56,6 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.85 }}
         >
           <CountdownTimer />
-        </motion.div>
-
-        {/* Sponsor logos */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.95 }}
-          className="flex items-center justify-center gap-8 mt-4 mb-6"
-        >
-          <p className="text-text-muted text-xs tracking-[0.2em] uppercase">Sponsored by</p>
-          <Image
-            src="/anthropic-logo.png"
-            alt="Anthropic"
-            width={120}
-            height={40}
-            className="object-contain h-auto w-auto"
-          />
-          <Image
-            src="/lovable-logo.png"
-            alt="Lovable"
-            width={120}
-            height={40}
-            className="object-contain h-auto w-auto"
-          />
         </motion.div>
 
         {/* CTAs */}
