@@ -33,7 +33,7 @@ export function Hero() {
             alt="Empire Hacks 2026"
             width={400}
             height={400}
-            className="object-contain h-auto w-auto max-w-[200px] md:max-w-[400px]"
+            className="object-contain h-auto w-[95vw] max-w-[400px]"
             priority
           />
         </motion.div>
