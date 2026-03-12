@@ -31,9 +31,9 @@ export function Hero() {
           <Image
             src="/empirehacks26_nobg.png"
             alt="Empire Hacks 2026"
-            width={300}
-            height={300}
-            className="object-contain h-auto w-auto max-w-[150px] md:max-w-[300px]"
+            width={400}
+            height={400}
+            className="object-contain h-auto w-auto max-w-[200px] md:max-w-[400px]"
             priority
           />
         </motion.div>
