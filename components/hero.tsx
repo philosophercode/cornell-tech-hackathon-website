@@ -58,30 +58,6 @@ export function Hero() {
           <CountdownTimer />
         </motion.div>
 
-        {/* Sponsor logos */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.95 }}
-          className="flex items-center justify-center gap-8 mt-4 mb-6"
-        >
-          <p className="text-text-muted text-xs tracking-[0.2em] uppercase">Sponsored by</p>
-          <Image
-            src="/anthropic-logo.png"
-            alt="Anthropic"
-            width={120}
-            height={40}
-            className="object-contain h-auto w-auto"
-          />
-          <Image
-            src="/lovable-logo.png"
-            alt="Lovable"
-            width={120}
-            height={40}
-            className="object-contain h-auto w-auto"
-          />
-        </motion.div>
-
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
