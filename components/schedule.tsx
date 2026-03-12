@@ -8,6 +8,7 @@ interface ScheduleEvent {
   time: string;
   title: string;
   description?: string;
+  location?: string;
 }
 
 interface Day {
@@ -22,70 +23,96 @@ const days: Day[] = [
   {
     date: "March 20",
     label: "Friday",
-    tag: "Virtual",
+    tag: "Online",
     tagColor: "text-accent-blue border-accent-blue/30 bg-accent-blue/5",
     events: [
       {
         time: "4:00 – 5:00 PM",
         title: "Day 1 Kickoff",
-        description: "General logistics, topic announcement, award categories",
+        description: "General logistics, topic announcement, awards sections",
+        location: "Zoom / Slack",
       },
       {
         time: "5:00 – 6:00 PM",
-        title: "Team Matching & Networking",
-        description: "Online session to form teams and connect with peers",
+        title: "Online Team Matching / Networking Session",
+        location: "Slack",
       },
       {
         time: "6:00 PM – EOD",
-        title: "Build Time Begins",
-        description: "Teams start ideating and building",
+        title: "Build Time for Teams",
+        location: "Slack",
       },
     ],
   },
   {
     date: "March 21",
     label: "Saturday",
-    tag: "Virtual",
+    tag: "Online",
     tagColor: "text-accent-blue border-accent-blue/30 bg-accent-blue/5",
     events: [
       {
         time: "9:00 – 10:00 AM",
         title: "Day 2 Kickoff",
-        description: "Presentation logistics, topic reminder, check-in",
+        description: "Presentation logistics, topic reminder, awards sections",
+        location: "Zoom / Slack",
       },
       {
         time: "10:00 AM – EOD",
-        title: "Build Time",
-        description: "Full day of focused team building",
+        title: "Build Time for Teams",
+        location: "Slack",
       },
     ],
   },
   {
     date: "March 22",
     label: "Sunday",
-    tag: "In-Person",
+    tag: "In-Person (Tentative)",
     tagColor: "text-cornell-red border-cornell-red/30 bg-cornell-red/5",
     events: [
-      { time: "9:00 – 10:00 AM", title: "Check-In & Breakfast" },
-      { time: "10:00 – 10:30 AM", title: "Opening Remarks" },
+      {
+        time: "9:00 – 10:00 AM",
+        title: "Check-In and Breakfast",
+        location: "Bloomberg 161/165",
+      },
+      {
+        time: "10:00 – 10:30 AM",
+        title: "Day 3 Kickoff",
+        location: "Bloomberg Auditorium",
+      },
+      {
+        time: "10:30 – 11:30 AM",
+        title: "Optional Workshop 1a – AI Society",
+        location: "Bloomberg Auditorium",
+      },
+      {
+        time: "10:30 – 11:30 AM",
+        title: "Optional Workshop 1b",
+        location: "Bloomberg 081",
+      },
+      {
+        time: "11:30 AM – 12:30 PM",
+        title: "Optional Workshop 2a – AI Society",
+        location: "Bloomberg Auditorium",
+      },
+      {
+        time: "11:30 AM – 12:30 PM",
+        title: "Optional Workshop 2b",
+        location: "Bloomberg 081",
+      },
       {
         time: "10:30 AM – 12:30 PM",
-        title: "Technical Workshops",
-        description: "Parallel sessions led by sponsors and organizers",
+        title: "Build Session for Teams",
+        location: "Bloomberg 161/165",
       },
       {
-        time: "12:30 – 3:00 PM",
-        title: "Sponsor Fair & Lunch",
-        description: "Network with sponsors over an extended lunch",
+        time: "12:30 – 2:30 PM",
+        title: "Sponsor Fair + Lunch",
+        description: "Overlapping with build time",
+        location: "Bloomberg 161/165",
       },
-      {
-        time: "3:00 – 5:00 PM",
-        title: "Build Session & Keynotes",
-        description: "Final build sprint with keynote speakers",
-      },
-      { time: "5:00 – 6:30 PM", title: "Demos & Judging" },
-      { time: "6:30 – 7:30 PM", title: "Dinner" },
-      { time: "7:30 – 8:00 PM", title: "Closing Remarks & Awards" },
+      { time: "3:00 – 5:00 PM", title: "Demos & Judging" },
+      { time: "5:00 – 6:00 PM", title: "Dinner" },
+      { time: "6:00 – 6:30 PM", title: "Closing Remarks & Awards" },
     ],
   },
 ];
@@ -183,6 +210,11 @@ export function Schedule() {
                       {event.description && (
                         <p className="text-text-secondary text-sm leading-relaxed">
                           {event.description}
+                        </p>
+                      )}
+                      {event.location && (
+                        <p className="text-text-muted text-xs mt-1 tracking-wide">
+                          {event.location}
                         </p>
                       )}
                     </div>
