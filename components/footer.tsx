@@ -84,7 +84,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://cornell-tech-ai-society.vercel.app/"
+                    href="https://aisocietycornell.tech/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-text-secondary text-sm hover:text-text-primary transition-colors"

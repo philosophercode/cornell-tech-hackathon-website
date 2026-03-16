@@ -81,7 +81,7 @@ export function About() {
             builders from five universities for a weekend of prototyping agentic
             AI solutions across real-world workflows. In collaboration with the{" "}
             <a
-              href="https://cornell-tech-ai-society.vercel.app/"
+              href="https://aisocietycornell.tech/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-cornell-red hover:underline"

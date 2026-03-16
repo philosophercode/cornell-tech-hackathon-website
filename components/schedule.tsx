@@ -66,7 +66,7 @@ const days: Day[] = [
   {
     date: "March 22",
     label: "Sunday",
-    tag: "In-Person (Tentative)",
+    tag: "In-Person",
     tagColor: "text-cornell-red border-cornell-red/30 bg-cornell-red/5",
     events: [
       {
