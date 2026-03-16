@@ -81,13 +81,23 @@ const days: Day[] = [
       },
       {
         time: "10:30 – 11:30 AM",
-        title: "Optional Workshop – AI Society",
+        title: "Optional Workshop 1a – AI Society",
+        location: "Bloomberg Auditorium",
+      },
+      {
+        time: "10:30 – 11:30 AM",
+        title: "Optional Workshop 1b",
+        location: "Bloomberg 081",
+      },
+      {
+        time: "11:30 AM – 12:30 PM",
+        title: "Optional Workshop 2a – AI Society",
         location: "Bloomberg Auditorium",
       },
       {
         time: "11:30 AM – 12:30 PM",
-        title: "Optional Workshop – AI Society",
-        location: "Bloomberg Auditorium",
+        title: "Optional Workshop 2b",
+        location: "Bloomberg 081",
       },
       {
         time: "10:30 AM – 12:30 PM",
@@ -95,14 +105,31 @@ const days: Day[] = [
         location: "Bloomberg 161/165",
       },
       {
-        time: "12:30 – 2:30 PM",
+        time: "12:30 – 2:00 PM",
         title: "Sponsor Fair + Lunch",
-        description: "Overlapping with build time",
+        description: "Overlapping",
+        location: "Bloomberg 161/165 · Lunch Overflow 081",
+      },
+      {
+        time: "2:00 – 3:30 PM",
+        title: "Keynote Speaker Panel + AMA",
+        location: "Bloomberg Auditorium",
+      },
+      {
+        time: "2:00 – 3:30 PM",
+        title: "Build Session for Teams",
         location: "Bloomberg 161/165",
       },
-      { time: "3:00 – 5:00 PM", title: "Demos & Judging" },
-      { time: "5:00 – 6:00 PM", title: "Dinner" },
-      { time: "6:00 – 6:30 PM", title: "Closing Remarks & Awards" },
+      {
+        time: "3:30 – 4:30 PM",
+        title: "Demos and Judging",
+        location: "Bloomberg Auditorium",
+      },
+      {
+        time: "4:30 – 5:00 PM",
+        title: "Closing Remarks & Awards",
+        location: "Bloomberg Auditorium",
+      },
     ],
   },
 ];
