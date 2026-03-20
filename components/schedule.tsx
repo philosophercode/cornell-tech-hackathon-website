@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "./fade-in";
 
@@ -9,6 +9,11 @@ interface ScheduleEvent {
   title: string;
   description?: string;
   location?: string;
+  highlight?: boolean;
+  parallel?: {
+    title: string;
+    location: string;
+  };
 }
 
 interface Day {
@@ -27,20 +32,20 @@ const days: Day[] = [
     tagColor: "text-accent-blue border-accent-blue/30 bg-accent-blue/5",
     events: [
       {
-        time: "4:00 – 5:00 PM",
+        time: "4:00 – 4:30 PM",
         title: "Day 1 Kickoff",
-        description: "General logistics, topic announcement, awards sections",
-        location: "Zoom / Slack",
+        description: "Logistics, theme reveal, judge introduction",
+        location: "Zoom",
       },
       {
-        time: "5:00 – 6:00 PM",
-        title: "Online Team Matching / Networking Session",
-        location: "Slack",
+        time: "4:30 – 6:00 PM",
+        title: "Online Team Matching and Networking Session",
+        location: "Zoom: Breakout Rooms by Theme",
       },
       {
         time: "6:00 PM – EOD",
         title: "Build Time for Teams",
-        location: "Slack",
+        location: "Async",
       },
     ],
   },
@@ -51,15 +56,15 @@ const days: Day[] = [
     tagColor: "text-accent-blue border-accent-blue/30 bg-accent-blue/5",
     events: [
       {
-        time: "9:00 – 10:00 AM",
+        time: "10:00 – 11:00 AM",
         title: "Day 2 Kickoff",
-        description: "Presentation logistics, topic reminder, awards sections",
-        location: "Zoom / Slack",
+        description: "Logistics and submission details",
+        location: "Zoom",
       },
       {
-        time: "10:00 AM – EOD",
+        time: "11:00 AM – EOD",
         title: "Build Time for Teams",
-        location: "Slack",
+        location: "Async",
       },
     ],
   },
@@ -81,61 +86,116 @@ const days: Day[] = [
       },
       {
         time: "10:30 – 11:30 AM",
-        title: "Optional Workshop 1a – AI Society",
-        location: "Bloomberg Auditorium",
-      },
-      {
-        time: "10:30 – 11:30 AM",
-        title: "Optional Workshop 1b",
-        location: "Bloomberg 081",
+        title: "AI Agents from First Principles",
+        description: "Pranav Dhingra, MEng '26",
+        location: "Bloomberg Auditorium (131)",
       },
       {
         time: "11:30 AM – 12:30 PM",
-        title: "Optional Workshop 2a – AI Society",
-        location: "Bloomberg Auditorium",
-      },
-      {
-        time: "11:30 AM – 12:30 PM",
-        title: "Optional Workshop 2b",
-        location: "Bloomberg 081",
-      },
-      {
-        time: "10:30 AM – 12:30 PM",
-        title: "Build Session for Teams",
-        location: "Bloomberg 161/165",
+        title: "Building Agent Teams — Practical Tools for AI-First Development",
+        description: "Isaac Steinberg, MBA '26",
+        location: "Bloomberg Auditorium (131)",
       },
       {
         time: "12:30 – 2:00 PM",
-        title: "Sponsor Fair + Lunch",
-        description: "Overlapping",
-        location: "Bloomberg 161/165 · Lunch Overflow 081",
+        title: "Networking Hour + Lunch",
+        location: "Bloomberg 161/165 · Overflow Room 061",
       },
       {
-        time: "2:00 – 3:30 PM",
+        time: "2:00 – 3:00 PM",
         title: "Keynote Speaker Panel + AMA",
         location: "Bloomberg Auditorium",
       },
       {
-        time: "2:00 – 3:30 PM",
-        title: "Build Session for Teams",
+        time: "3:00 PM",
+        title: "Submissions Due",
+        highlight: true,
+      },
+      {
+        time: "3:00 – 4:00 PM",
+        title: "Networking Hour for Attendees",
         location: "Bloomberg 161/165",
       },
       {
-        time: "3:30 – 4:30 PM",
-        title: "Demos and Judging",
-        location: "Bloomberg Auditorium",
-      },
-      {
-        time: "4:30 – 5:00 PM",
-        title: "Closing Remarks & Awards",
+        time: "4:00 – 5:00 PM",
+        title: "Finalist Demos, Awards, Closing Remarks",
         location: "Bloomberg Auditorium",
       },
     ],
   },
 ];
 
+// Date string for each day index: "2026-03-20", "2026-03-21", "2026-03-22"
+const DAY_DATES = ["2026-03-20", "2026-03-21", "2026-03-22"];
+
+/**
+ * Parse a time like "4:00 PM", "11:30 AM", or "4:00 – 4:30 PM" (returns start time)
+ * into a Date object on the given day in NYC timezone.
+ */
+function parseEventStart(timeStr: string, dayIndex: number): Date {
+  // Take just the start time (before any "–")
+  const start = timeStr.split("–")[0].trim();
+  // Extract hours, minutes, and AM/PM
+  // Handle cases like "4:00 PM" or "11:30 AM" or "6:00 PM" or just "3:00 PM"
+  const match = start.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i)
+    ?? timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if (!match) return new Date(0);
+
+  let hours = parseInt(match[1], 10);
+  const minutes = parseInt(match[2], 10);
+  const ampm = match[3].toUpperCase();
+
+  if (ampm === "PM" && hours !== 12) hours += 12;
+  if (ampm === "AM" && hours === 12) hours = 0;
+
+  // EDT = UTC-4
+  const dateStr = DAY_DATES[dayIndex];
+  return new Date(`${dateStr}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00-04:00`);
+}
+
+/**
+ * Returns the index of the current or next-upcoming event for a given day.
+ * Returns 0 if before all events, last index if past all events on that day.
+ */
+function getCurrentEventIndex(dayIndex: number, events: ScheduleEvent[]): number {
+  const now = Date.now();
+  // Find the last event whose start time has passed
+  let activeIndex = 0;
+  for (let i = 0; i < events.length; i++) {
+    const eventStart = parseEventStart(events[i].time, dayIndex);
+    if (eventStart.getTime() <= now) {
+      activeIndex = i;
+    }
+  }
+  return activeIndex;
+}
+
+function getTodayIndex(): number {
+  // Get current date in NYC timezone
+  const nyc = new Date().toLocaleDateString("en-US", { timeZone: "America/New_York" });
+  const nycDate = new Date(nyc);
+  const month = nycDate.getMonth() + 1; // 1-indexed
+  const day = nycDate.getDate();
+
+  if (month === 3 && day === 20) return 0; // Friday
+  if (month === 3 && day === 21) return 1; // Saturday
+  if (month === 3 && day === 22) return 2; // Sunday
+  // Default to Sunday (the most content-rich day)
+  return 2;
+}
+
 export function Schedule() {
-  const [activeDay, setActiveDay] = useState(2);
+  const [activeDay, setActiveDay] = useState(getTodayIndex);
+  const [activeEventIndex, setActiveEventIndex] = useState(0);
+
+  useEffect(() => {
+    function update() {
+      setActiveEventIndex(getCurrentEventIndex(activeDay, days[activeDay].events));
+    }
+    update();
+    const interval = setInterval(update, 30_000); // refresh every 30s
+    return () => clearInterval(interval);
+  }, [activeDay]);
 
   return (
     <section id="schedule" className="relative py-32 px-6">
@@ -171,7 +231,7 @@ export function Schedule() {
                 className={`relative px-5 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   activeDay === i
                     ? "bg-white/[0.07] text-text-primary border border-border-medium"
-                    : "text-text-muted hover:text-text-secondary hover:bg-white/[0.02]"
+                    : "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
                 <span className="block">{day.date}</span>
@@ -197,8 +257,9 @@ export function Schedule() {
               {days[activeDay].tag}
             </span>
 
-            {/* Timeline */}
-            <div className="relative">
+            {/* Timeline + sidebar */}
+            <div className="relative flex gap-8">
+            <div className="relative flex-1 min-w-0">
               {/* Vertical line */}
               <div className="absolute left-[7px] top-3 bottom-3 w-px bg-border-subtle" />
 
@@ -209,7 +270,7 @@ export function Schedule() {
                     <div className="relative z-10 mt-[22px]">
                       <div
                         className={`w-[15px] h-[15px] rounded-full border-2 transition-colors duration-300 ${
-                          i === 0
+                          i === activeEventIndex
                             ? "border-cornell-red bg-cornell-red/20"
                             : "border-border-medium bg-bg-primary group-hover:border-text-muted"
                         }`}
@@ -218,26 +279,78 @@ export function Schedule() {
 
                     {/* Content */}
                     <div className="pb-8 flex-1">
-                      <p className="text-xs text-text-muted tracking-wide mb-1 font-medium tabular-nums">
+                      <p className="text-xs tracking-wide mb-1 font-medium tabular-nums text-neutral-400">
                         {event.time}
                       </p>
-                      <h3 className="text-text-primary text-lg font-medium mb-1">
-                        {event.title}
-                      </h3>
-                      {event.description && (
-                        <p className="text-text-secondary text-sm leading-relaxed">
-                          {event.description}
-                        </p>
-                      )}
-                      {event.location && (
-                        <p className="text-text-muted text-xs mt-1 tracking-wide">
-                          {event.location}
-                        </p>
+                      {event.parallel ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div className="rounded-lg border border-border-subtle bg-white/[0.03] p-3">
+                            <h3 className="text-white text-lg font-medium mb-1">
+                              {event.title}
+                            </h3>
+                            {event.description && (
+                              <p className="text-neutral-300 text-sm leading-relaxed">
+                                {event.description}
+                              </p>
+                            )}
+                            {event.location && (
+                              <p className="text-neutral-400 text-xs mt-1 tracking-wide">
+                                {event.location}
+                              </p>
+                            )}
+                          </div>
+                          <div className="rounded-lg border border-border-subtle bg-white/[0.03] p-3">
+                            <h3 className="text-white text-lg font-medium mb-1">
+                              {event.parallel.title}
+                            </h3>
+                            <p className="text-neutral-400 text-xs mt-1 tracking-wide">
+                              {event.parallel.location}
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <h3 className={`text-lg font-medium mb-1 ${event.highlight ? "text-white font-semibold drop-shadow-[0_0_20px_rgba(255,255,255,0.7)]" : "text-white"}`}>
+                            {event.title}
+                          </h3>
+                          {event.description && (
+                            <p className="text-neutral-300 text-sm leading-relaxed">
+                              {event.description}
+                            </p>
+                          )}
+                          {event.location && (
+                            <p className="text-neutral-400 text-xs mt-1 tracking-wide">
+                              {event.location}
+                            </p>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Build space sidebar — Sunday only */}
+            {activeDay === 2 && (
+              <div className="hidden lg:block w-64 flex-shrink-0">
+                <div className="sticky top-32 rounded-xl border border-cornell-red/20 bg-cornell-red/[0.04] p-5">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-cornell-red font-semibold mb-3">
+                    Build Space
+                  </p>
+                  <p className="text-white text-sm font-medium mb-2">
+                    Open all day for teams
+                  </p>
+                  <p className="text-neutral-300 text-xs leading-relaxed mb-3">
+                    Come and go as you like — hack between sessions, workshops, and talks.
+                  </p>
+                  <div className="border-t border-white/[0.06] pt-3">
+                    <p className="text-neutral-400 text-[11px] tracking-wide mb-1">Bloomberg 161/165</p>
+                    <p className="text-neutral-400 text-[11px] tracking-wide">Overflow Room 061</p>
+                  </div>
+                </div>
+              </div>
+            )}
             </div>
           </motion.div>
         </AnimatePresence>
