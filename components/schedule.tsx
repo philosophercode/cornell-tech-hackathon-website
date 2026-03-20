@@ -8,6 +8,7 @@ interface ScheduleEvent {
   time: string;
   title: string;
   description?: string;
+  fullDescription?: string;
   location?: string;
   highlight?: boolean;
   parallel?: {
@@ -88,12 +89,14 @@ const days: Day[] = [
         time: "10:30 – 11:30 AM",
         title: "AI Agents from First Principles",
         description: "Pranav Dhingra, MEng '26",
+        fullDescription: "Having a hard time understanding WTF is going on? Transformers, LLMs, Codex, OpenClaw, GPT, Opus, Gemini, MCP, CLI, Skills, Orchestration, Evals — there's just too much jargon out there to understand. Don't worry. In this workshop, we'll equip you with a mental model for how to understand all the technology out there and keep up with new releases, starting from the tiniest transformer block, all the way to multi-agent orchestrated systems. We'll also demystify the jargon for you! Come ready to learn.",
         location: "Bloomberg Auditorium (131)",
       },
       {
         time: "11:30 AM – 12:30 PM",
         title: "Building Agent Teams — Practical Tools for AI-First Development",
         description: "Isaac Steinberg, MBA '26",
+        fullDescription: "Learn how to turn team meetings and discussions into AI agent tasks that can be executed and shipped. Go from zero to shipping at velocity — how to orchestrate AI agents at scale, what an agent control plane is, and how to build one. A practical, tools-first approach to running AI development teams.",
         location: "Bloomberg Auditorium (131)",
       },
       {
@@ -182,6 +185,28 @@ function getTodayIndex(): number {
   if (month === 3 && day === 22) return 2; // Sunday
   // Default to Sunday (the most content-rich day)
   return 2;
+}
+
+function ExpandableDescription({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const truncLength = 80;
+  const needsTruncation = text.length > truncLength;
+
+  return (
+    <p className="text-neutral-300 text-sm leading-relaxed">
+      {expanded || !needsTruncation
+        ? text
+        : text.slice(0, truncLength).trimEnd() + "… "}
+      {needsTruncation && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-neutral-400 hover:text-white text-xs ml-1 transition-colors"
+        >
+          {expanded ? "show less" : "show more"}
+        </button>
+      )}
+    </p>
+  );
 }
 
 export function Schedule() {
@@ -279,7 +304,7 @@ export function Schedule() {
 
                     {/* Content */}
                     <div className="pb-8 flex-1">
-                      <p className="text-xs tracking-wide mb-1 font-medium tabular-nums text-neutral-400">
+                      <p className={`text-xs tracking-wide mb-1 font-medium tabular-nums ${event.highlight ? "text-cornell-red" : "text-neutral-400"}`}>
                         {event.time}
                       </p>
                       {event.parallel ? (
@@ -317,6 +342,9 @@ export function Schedule() {
                             <p className="text-neutral-300 text-sm leading-relaxed">
                               {event.description}
                             </p>
+                          )}
+                          {event.fullDescription && (
+                            <ExpandableDescription text={event.fullDescription} />
                           )}
                           {event.location && (
                             <p className="text-neutral-400 text-xs mt-1 tracking-wide">
