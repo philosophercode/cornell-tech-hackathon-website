@@ -282,6 +282,17 @@ export function Schedule() {
               {days[activeDay].tag}
             </span>
 
+            {/* Build space card — mobile only, Sunday */}
+            {activeDay === 2 && (
+              <div className="lg:hidden rounded-xl border border-cornell-red/20 bg-cornell-red/[0.04] p-4 mb-8 flex items-center gap-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-cornell-red font-semibold mb-1">Build Space</p>
+                  <p className="text-white text-sm font-medium">Open all day for teams</p>
+                  <p className="text-neutral-400 text-xs mt-1">Bloomberg 161/165 · Overflow Room 061</p>
+                </div>
+              </div>
+            )}
+
             {/* Timeline + sidebar */}
             <div className="relative flex gap-8">
             <div className="relative flex-1 min-w-0">

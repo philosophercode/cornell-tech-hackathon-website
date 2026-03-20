@@ -27,42 +27,38 @@
     body {
       margin: 0 !important;
       padding: 0 !important;
-      background-color: #06060a;
+      background-color: #0d0d14;
       width: 100% !important;
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     @media only screen and (max-width: 620px) {
-      .email-container { width: 100% !important; }
+      .email-container { width: 100% !important; max-width: 100% !important; min-width: 100% !important; }
       .fluid { max-width: 100% !important; height: auto !important; }
       .stack-column { display: block !important; width: 100% !important; }
-      .mobile-pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .mobile-pad { padding-left: 20px !important; padding-right: 20px !important; }
       .mobile-center { text-align: center !important; }
-      .logo-row img { width: 50px !important; height: auto !important; }
+      .hero-cell { border-radius: 0 !important; border-left: none !important; border-right: none !important; }
+      .hero-logo { width: 180px !important; }
     }
   </style>
 </head>
-<body style="margin:0; padding:0; background-color:#06060a;">
+<body style="margin:0; padding:0; background-color:#0d0d14;">
 
   <!-- Preheader (hidden preview text) -->
   <div style="display:none; font-size:1px; color:#06060a; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">
     EmpireHacks 2026 kicks off today — and Sunday's AI Society workshops at Cornell Tech are open to everyone.
   </div>
 
-  <!-- Full-width wrapper -->
-  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#06060a;">
-    <tr>
-      <td align="center" valign="top">
-
-        <!-- Email container -->
-        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="580" class="email-container" style="margin:auto;">
+  <!-- Email container -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#0d0d14; max-width:580px; margin:0 auto;" class="email-container">
 
           <!-- Top spacer -->
-          <tr><td style="height:40px; background-color:#06060a;"></td></tr>
+          <tr><td style="height:20px; background-color:#0d0d14;"></td></tr>
 
           <!-- Hero section with gradient border -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0d0d14 0%, #16162a 100%); border-radius:16px; border:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+            <td class="hero-cell" style="background: linear-gradient(135deg, #0d0d14 0%, #16162a 100%); border-radius:16px; border:1px solid rgba(255,255,255,0.06); overflow:hidden;">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
 
                 <!-- Accent line at top -->
@@ -73,14 +69,14 @@
                 <!-- Logo -->
                 <tr>
                   <td align="center" style="padding:40px 40px 24px 40px;" class="mobile-pad">
-                    <img src="https://www.empirehacks.nyc/empirehacks26_nobg.png" alt="EmpireHacks 2026" width="220" style="display:block; width:220px; height:auto;">
+                    <img class="hero-logo" src="https://www.empirehacks.nyc/empirehacks26_nobg.png" alt="EmpireHacks 2026" width="220" style="display:block; width:220px; height:auto;">
                   </td>
                 </tr>
 
                 <!-- Subtitle -->
                 <tr>
                   <td align="center" style="padding:0 40px 0 40px;" class="mobile-pad">
-                    <p style="margin:0; font-size:13px; color:#8a8a9a; font-family:'DM Sans',sans-serif; letter-spacing:1px; text-transform:uppercase;">
+                    <p style="margin:0; font-size:13px; color:#a0a0b0; font-family:'DM Sans',sans-serif; letter-spacing:1px; text-transform:uppercase;">
                       Kickoff Weekend
                     </p>
                   </td>
@@ -96,13 +92,13 @@
                 <!-- Body copy -->
                 <tr>
                   <td style="padding:0 40px;" class="mobile-pad">
-                    <p style="margin:0 0 20px 0; font-size:15px; line-height:1.7; color:#c8c8d0; font-family:'DM Sans',sans-serif;">
+                    <p style="margin:0 0 20px 0; font-size:15px; line-height:1.7; color:#d8d8e0; font-family:'DM Sans',sans-serif;">
                       Hi everyone,
                     </p>
-                    <p style="margin:0 0 20px 0; font-size:15px; line-height:1.7; color:#c8c8d0; font-family:'DM Sans',sans-serif;">
+                    <p style="margin:0 0 20px 0; font-size:15px; line-height:1.7; color:#d8d8e0; font-family:'DM Sans',sans-serif;">
                       <strong style="color:#f5f5f7;">EmpireHacks 2026</strong> kicks off today! To everyone participating &mdash; congratulations on being selected. We&rsquo;re so excited to have you hacking this weekend.                    </p>
-                    <p style="margin:0 0 20px 0; font-size:15px; line-height:1.7; color:#c8c8d0; font-family:'DM Sans',sans-serif;">
-                      And for the whole AI Society &mdash; whether or not you&rsquo;re hacking, you&rsquo;re welcome to join us on <strong style="color:#f5f5f7;">Sunday at Cornell Tech</strong>. We have two workshops hosted by the AI Society that are <strong style="color:#f5f5f7;">open to all of Cornell Tech</strong>. Come hang out, learn something new, and meet the community.
+                    <p style="margin:0 0 20px 0; font-size:15px; line-height:1.7; color:#d8d8e0; font-family:'DM Sans',sans-serif;">
+                      And for the whole AI Society &mdash; whether or not you&rsquo;re hacking, you&rsquo;re welcome to join us on <strong style="color:#f5f5f7;">Sunday at Cornell Tech</strong>. Come hang out, learn something new, and meet the community.
                     </p>
                   </td>
                 </tr>
@@ -117,9 +113,9 @@
                 <!-- Sunday workshops header -->
                 <tr>
                   <td style="padding:0 40px 16px 40px;" class="mobile-pad">
-                    <p style="margin:0 0 4px 0; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#555566; font-family:'DM Sans',sans-serif; font-weight:600;">Sunday Workshops</p>
-                    <p style="margin:0; font-size:14px; line-height:1.6; color:#8a8a9a; font-family:'DM Sans',sans-serif;">
-                      Hosted by the <strong style="color:#c8c8d0;">AI Society</strong> &mdash; open to all of Cornell Tech
+                    <p style="margin:0 0 4px 0; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#a0a0b0; font-family:'DM Sans',sans-serif; font-weight:600;">Sunday Workshops</p>
+                    <p style="margin:0; font-size:14px; line-height:1.6; color:#a0a0b0; font-family:'DM Sans',sans-serif;">
+                      Hosted by the <strong style="color:#d8d8e0;">AI Society</strong> &mdash; open to all of Cornell Tech
                     </p>
                   </td>
                 </tr>
@@ -134,11 +130,11 @@
                             <tr>
                               <td valign="top">
                                 <p style="margin:0 0 4px 0; font-size:15px; font-weight:600; color:#f5f5f7; font-family:'DM Sans',sans-serif;">AI Agents from First Principles</p>
-                                <p style="margin:0 0 2px 0; font-size:12px; color:#c8c8d0; font-family:'DM Sans',sans-serif;">Pranav Dhingra, MEng &rsquo;26</p>
-                                <p style="margin:0 0 6px 0; font-size:13px; color:#8a8a9a; font-family:'DM Sans',sans-serif; line-height:1.5;">
-                                  10:30 &ndash; 11:30 AM &nbsp;&middot;&nbsp; Bloomberg Auditorium <span style="color:#555566;">(131)</span>
+                                <p style="margin:0 0 2px 0; font-size:12px; color:#d8d8e0; font-family:'DM Sans',sans-serif;">Pranav Dhingra, MEng &rsquo;26</p>
+                                <p style="margin:0 0 6px 0; font-size:13px; color:#a0a0b0; font-family:'DM Sans',sans-serif; line-height:1.5;">
+                                  10:30 &ndash; 11:30 AM &nbsp;&middot;&nbsp; Bloomberg Auditorium <span style="color:#a0a0b0;">(131)</span>
                                 </p>
-                                <p style="margin:0; font-size:12px; color:#c8c8d0; font-family:'DM Sans',sans-serif; line-height:1.6;">
+                                <p style="margin:0; font-size:12px; color:#d8d8e0; font-family:'DM Sans',sans-serif; line-height:1.6;">
                                   Build a mental model for all the AI jargon &mdash; from the tiniest transformer block to multi-agent orchestrated systems. We&rsquo;ll demystify the tech and equip you to keep up with new releases.
                                 </p>
                               </td>
@@ -160,11 +156,11 @@
                             <tr>
                               <td valign="top">
                                 <p style="margin:0 0 4px 0; font-size:15px; font-weight:600; color:#f5f5f7; font-family:'DM Sans',sans-serif;">Building Agent Teams: Practical Tools for AI-First Development</p>
-                                <p style="margin:0 0 2px 0; font-size:12px; color:#c8c8d0; font-family:'DM Sans',sans-serif;">Isaac Steinberg, MBA &rsquo;26</p>
-                                <p style="margin:0 0 6px 0; font-size:13px; color:#8a8a9a; font-family:'DM Sans',sans-serif; line-height:1.5;">
-                                  11:30 AM &ndash; 12:30 PM &nbsp;&middot;&nbsp; Bloomberg Auditorium <span style="color:#555566;">(131)</span>
+                                <p style="margin:0 0 2px 0; font-size:12px; color:#d8d8e0; font-family:'DM Sans',sans-serif;">Isaac Steinberg, MBA &rsquo;26</p>
+                                <p style="margin:0 0 6px 0; font-size:13px; color:#a0a0b0; font-family:'DM Sans',sans-serif; line-height:1.5;">
+                                  11:30 AM &ndash; 12:30 PM &nbsp;&middot;&nbsp; Bloomberg Auditorium <span style="color:#a0a0b0;">(131)</span>
                                 </p>
-                                <p style="margin:0; font-size:12px; color:#c8c8d0; font-family:'DM Sans',sans-serif; line-height:1.6;">
+                                <p style="margin:0; font-size:12px; color:#d8d8e0; font-family:'DM Sans',sans-serif; line-height:1.6;">
                                   Learn how to turn team meetings and discussions into AI agent tasks that can be executed and shipped. Go from zero to shipping at velocity &mdash; how to orchestrate AI agents at scale, what an agent control plane is, and how to build one. A practical, tools-first approach to running AI development teams.
                                 </p>
                               </td>
@@ -208,16 +204,16 @@
                 <!-- Footer / Signature -->
                 <tr>
                   <td style="padding:0 40px 40px 40px;" class="mobile-pad">
-                    <p style="margin:0 0 12px 0; font-size:14px; color:#c8c8d0; font-family:'DM Sans',sans-serif;">
+                    <p style="margin:0 0 12px 0; font-size:14px; color:#d8d8e0; font-family:'DM Sans',sans-serif;">
                       See you out there,
                     </p>
                     <p style="margin:0; font-size:14px; line-height:1.8; color:#f5f5f7; font-family:'DM Sans',sans-serif; font-weight:600;">
                       EmpireHacks Team
                     </p>
-                    <p style="margin:0; font-size:13px; line-height:1.7; color:#8a8a9a; font-family:'DM Sans',sans-serif;">
+                    <p style="margin:0; font-size:13px; line-height:1.7; color:#a0a0b0; font-family:'DM Sans',sans-serif;">
                       Cornell Tech Student Government<br>
-                      <a href="https://aisocietycornell.tech/" target="_blank" style="color:#c8c8d0; text-decoration:underline;">Cornell Tech AI Society</a><br>
-                      <a href="https://groups.gsb.columbia.edu/aic/home/" target="_blank" style="color:#c8c8d0; text-decoration:underline;">Columbia University AI Club</a>
+                      <a href="https://aisocietycornell.tech/" target="_blank" style="color:#d8d8e0; text-decoration:underline;">Cornell Tech AI Society</a><br>
+                      <a href="https://groups.gsb.columbia.edu/aic/home/" target="_blank" style="color:#d8d8e0; text-decoration:underline;">Columbia University AI Club</a>
                     </p>
                   </td>
                 </tr>
@@ -229,15 +225,12 @@
           <!-- Bottom spacer + unsubscribe -->
           <tr>
             <td align="center" style="padding:24px 40px 40px 40px;" class="mobile-pad">
-              <p style="margin:0; font-size:11px; color:#555566; font-family:'DM Sans',sans-serif; line-height:1.6;">
+              <p style="margin:0; font-size:11px; color:#a0a0b0; font-family:'DM Sans',sans-serif; line-height:1.6;">
                 EmpireHacks 2026 &middot; Cornell Tech, Roosevelt Island, NYC
               </p>
             </td>
           </tr>
 
-        </table>
-      </td>
-    </tr>
   </table>
 
 </body>
